@@ -9,34 +9,34 @@ int main()
 	string str;
 	string temp;
 	int flag;
-	int k=1;												//²é¿´½ø¶È
-	vector<string>duanlian;								//ËùÓĞµÄ¶ÌÁ´
+	int k=1;												//æŸ¥çœ‹è¿›åº¦
+	vector<string>duanlian;								//æ‰€æœ‰çš„çŸ­é“¾
 
-	fstream inf1("D://TCR//TCR+.txt", ios::in);			//ËùÓĞÎ¬¶È
-	fstream inf2("D://TCR//TCR+.txt", ios::in);			//ËùÓĞÎ¬¶È
-	fstream inf3("D://TCR//TCR-.txt", ios::in);			//ËùÓĞÌØÕ÷¾ØÕó
-	fstream inf4("D://TCR//TCR-.txt", ios::in);			//ËùÓĞÌØÕ÷¾ØÕó
+	fstream inf1("D://TCR//TCR+.txt", ios::in);			//æ‰€æœ‰ç»´åº¦
+	fstream inf2("D://TCR//TCR+.txt", ios::in);			//æ‰€æœ‰ç»´åº¦
+	fstream inf3("D://TCR//TCR-.txt", ios::in);			//æ‰€æœ‰ç‰¹å¾çŸ©é˜µ
+	fstream inf4("D://TCR//TCR-.txt", ios::in);			//æ‰€æœ‰ç‰¹å¾çŸ©é˜µ
 	fstream outf("D://TCR//matrix.txt", ios::out);
 	if ((!inf1) || (!inf2))
 	{
-		cout << "TCR+´ò¿ªÊ§°Ü" << endl;
+		cout << "TCR+æ‰“å¼€å¤±è´¥" << endl;
 	}
 	if ((!inf3) || (!inf4))
 	{
-		cout << "TCR-´ò¿ªÊ§°Ü" << endl;
+		cout << "TCR-æ‰“å¼€å¤±è´¥" << endl;
 	}
 	if (!outf)
 	{
-		cout << "matrix´ò¿ªÊ§°Ü" << endl;
+		cout << "matrixæ‰“å¼€å¤±è´¥" << endl;
 	}
 	//outf << "TCR" << ",";
-	while (inf1 >> str)									//Êä³öTCR+ËùÓĞÎ¬¶Èxi
+	while (inf1 >> str)									//è¾“å‡ºTCR+æ‰€æœ‰ç»´åº¦xi
 	{
 		for (int i = 0; i < str.length() - 2; i++)
 		{
 			temp = str.substr(i, 3);
-			flag = 0;			//flag=0±íÊ¾strÃ»ÔÚduanlianÖĞ
-			for (int i = 0; i < duanlian.size(); i++)		//²éÕÒstrÊÇ·ñÒÑ¾­ÔÚduanlianÖĞ£¬ÈôÔÚflag=1
+			flag = 0;			//flag=0è¡¨ç¤ºstræ²¡åœ¨duanlianä¸­
+			for (int i = 0; i < duanlian.size(); i++)		//æŸ¥æ‰¾stræ˜¯å¦å·²ç»åœ¨duanlianä¸­ï¼Œè‹¥åœ¨flag=1
 			{
 				if (temp == duanlian[i])
 				{
@@ -44,21 +44,21 @@ int main()
 					break;
 				}
 			}
-			if (!flag)				//Èç¹ûflag=0¼´str²»ÔÚduanlianÖĞ£¬²åÈë
+			if (!flag)				//å¦‚æœflag=0å³strä¸åœ¨duanlianä¸­ï¼Œæ’å…¥
 			{
 				duanlian.push_back(temp);
 				//outf << temp << ",";
 			}
 		}
 	}
-	cout << "TCR+Î¬¶ÈÊä³öÍê" << endl;
-	while (inf3 >> str)									//Êä³öTCR-ËùÓĞÎ¬¶Èxi
+	cout << "TCR+ç»´åº¦è¾“å‡ºå®Œ" << endl;
+	while (inf3 >> str)									//è¾“å‡ºTCR-æ‰€æœ‰ç»´åº¦xi
 	{
 		for (int i = 0; i < str.length() - 2; i++)
 		{
 			temp = str.substr(i, 3);
-			flag = 0;										//flag=0±íÊ¾strÃ»ÔÚduanlianÖĞ
-			for (int i = 0; i < duanlian.size(); i++)		//²éÕÒstrÊÇ·ñÒÑ¾­ÔÚduanlianÖĞ£¬ÈôÔÚflag=1
+			flag = 0;										//flag=0è¡¨ç¤ºstræ²¡åœ¨duanlianä¸­
+			for (int i = 0; i < duanlian.size(); i++)		//æŸ¥æ‰¾stræ˜¯å¦å·²ç»åœ¨duanlianä¸­ï¼Œè‹¥åœ¨flag=1
 			{
 				if (temp == duanlian[i])
 				{
@@ -66,7 +66,7 @@ int main()
 					break;
 				}
 			}
-			if (!flag)				//Èç¹ûflag=0¼´str²»ÔÚduanlianÖĞ£¬²åÈë
+			if (!flag)				//å¦‚æœflag=0å³strä¸åœ¨duanlianä¸­ï¼Œæ’å…¥
 			{
 				duanlian.push_back(temp);
 				//outf << temp << ",";
@@ -74,12 +74,12 @@ int main()
 		}
 	}
 	//outf << "class" << endl;
-	cout << "TCR-Î¬¶ÈÊä³öÍê" << endl;
+	cout << "TCR-ç»´åº¦è¾“å‡ºå®Œ" << endl;
 	
-	while (inf2 >> str)									//Êä³öÃ¿¸öTCR+µÄÌØÕ÷¾ØÕó
+	while (inf2 >> str)									//è¾“å‡ºæ¯ä¸ªTCR+çš„ç‰¹å¾çŸ©é˜µ
 	{
 		//outf << str << " ";
-		for (int i = 0; i < duanlian.size(); i++)		//²éÕÒstrÊÇ·ñÒÑ¾­ÔÚduanlianÖĞ£¬ÈôÔÚflag=1
+		for (int i = 0; i < duanlian.size(); i++)		//æŸ¥æ‰¾stræ˜¯å¦å·²ç»åœ¨duanlianä¸­ï¼Œè‹¥åœ¨flag=1
 		{
 			flag = 0;
 			for (int j = 0; j < str.length() - 2; j++)
@@ -97,13 +97,13 @@ int main()
 		}
 		outf << endl;
 		//outf << "1" << endl;
-		cout << k++ << endl;							//²é¿´½ø¶È
+		cout << k++ << endl;							//æŸ¥çœ‹è¿›åº¦
 	}
-	cout << "TCR+ÌØÕ÷¾ØÕóÊä³öÍê" << endl;
-	while (inf4 >> str)									//Êä³öÃ¿¸öTCR-µÄÌØÕ÷¾ØÕó
+	cout << "TCR+ç‰¹å¾çŸ©é˜µè¾“å‡ºå®Œ" << endl;
+	while (inf4 >> str)									//è¾“å‡ºæ¯ä¸ªTCR-çš„ç‰¹å¾çŸ©é˜µ
 	{
 		//outf << str << " ";
-		for (int i = 0; i < duanlian.size(); i++)		//²éÕÒstrÊÇ·ñÒÑ¾­ÔÚduanlianÖĞ£¬ÈôÔÚflag=1
+		for (int i = 0; i < duanlian.size(); i++)		//æŸ¥æ‰¾stræ˜¯å¦å·²ç»åœ¨duanlianä¸­ï¼Œè‹¥åœ¨flag=1
 		{
 			flag = 0;
 			for (int j = 0; j < str.length() - 2; j++)
@@ -123,7 +123,7 @@ int main()
 		//outf << "0" << endl;
 		cout << k++ << endl;
 	}
-	cout << "TCR-ÌØÕ÷¾ØÕóÊä³öÍê" << endl;
+	cout << "TCR-ç‰¹å¾çŸ©é˜µè¾“å‡ºå®Œ" << endl;
 	
 	inf1.close();
 	inf2.close();
