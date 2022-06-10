@@ -7,7 +7,7 @@ int main()
 {
 	string str;
 	char temp;
-	int times, n;			//Ñ­»·ÒÆÎ»´ÎÊı
+	int times, n;			//å¾ªç¯ç§»ä½æ¬¡æ•°
 	//fstream inf("d://test1.txt", ios::in);
 	//fstream inf("d://VDJdb+.txt", ios::in);
 	//fstream outf("d://VDJdb-.txt", ios::out);
@@ -15,19 +15,19 @@ int main()
 	fstream outf("d://McPAS-.txt", ios::out);    
 	if (!inf)
 	{
-		cout << "+´ò¿ªÊ§°Ü" << endl;
+		cout << "+æ‰“å¼€å¤±è´¥" << endl;
 	}
 	if (!outf)
 	{
-		cout << "-´ò¿ªÊ§°Ü" << endl;
+		cout << "-æ‰“å¼€å¤±è´¥" << endl;
 	}
 	
 	while (inf >> str)
 	{
 		n = str.length() - 3;
-		times = (rand() % (n - 2)) + 2;		//Ñ­»·ÒÆÎ»´ÎÊıÎªËæ»úÉú³É[2£¬str.length()-3)µÄÕûÊı
+		times = (rand() % (n - 2)) + 2;		//å¾ªç¯ç§»ä½æ¬¡æ•°ä¸ºéšæœºç”Ÿæˆ[2ï¼Œstr.length()-3)çš„æ•´æ•°
 		//cout << times << endl;
-		for (int j = 0; j < times;j++)		//Ñ­»·ÒÆÎ»times´Î
+		for (int j = 0; j < times;j++)		//å¾ªç¯ç§»ä½timesæ¬¡
 		{
 			temp = str[2];
 			for (int i = 2; i < str.length() - 2; i++)
