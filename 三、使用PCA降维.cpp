@@ -8,21 +8,21 @@ using namespace Eigen;
 
 void featurenormalize(MatrixXd &X)
 {
-	//¼ÆËãÃ¿Ò»Î¬¶È¾ùÖµ
+	//è®¡ç®—æ¯ä¸€ç»´åº¦å‡å€¼
 	MatrixXd meanval = X.colwise().mean();
 	RowVectorXd meanvecRow = meanval;
-	//Ñù±¾¾ùÖµ»¯Îª0
+	//æ ·æœ¬å‡å€¼åŒ–ä¸º0
 	X.rowwise() -= meanvecRow;
 }
 void computeCov(MatrixXd &X, MatrixXd &C)
 {
-	//¼ÆËãĞ­·½²î¾ØÕóC = XTX / n-1;
+	//è®¡ç®—åæ–¹å·®çŸ©é˜µC = XTX / n-1;
 	C = X.adjoint() * X;
 	C = C.array() /(X.rows() - 1);
 }
 void computeEig(MatrixXd &C, MatrixXd &vec, MatrixXd &val)
 {
-	//¼ÆËãÌØÕ÷ÖµºÍÌØÕ÷ÏòÁ¿£¬Ê¹ÓÃselfadjont°´ÕÕ¶ÔÕó¾ØÕóµÄËã·¨È¥¼ÆËã£¬¿ÉÒÔÈÃ²úÉúµÄvecºÍval°´ÕÕÓĞĞòÅÅÁĞ
+	//è®¡ç®—ç‰¹å¾å€¼å’Œç‰¹å¾å‘é‡ï¼Œä½¿ç”¨selfadjontæŒ‰ç…§å¯¹é˜µçŸ©é˜µçš„ç®—æ³•å»è®¡ç®—ï¼Œå¯ä»¥è®©äº§ç”Ÿçš„vecå’ŒvalæŒ‰ç…§æœ‰åºæ’åˆ—
 	SelfAdjointEigenSolver<MatrixXd> eig(C);
 
 	vec = eig.eigenvectors();
@@ -50,7 +50,7 @@ int main()
 	MatrixXd X(10000, 128), C(128, 128);
 	MatrixXd vec, val;
 
-	//¶ÁÈ¡Êı¾İ
+	//è¯»å–æ•°æ®
 	double in[200];
 	for (int i = 0; i < m; ++i)
 	{
@@ -61,17 +61,17 @@ int main()
 	}
 	//pca
 
-	//Áã¾ùÖµ»¯
+	//é›¶å‡å€¼åŒ–
 	featurenormalize(X);
-	//¼ÆËãĞ­·½²î
+	//è®¡ç®—åæ–¹å·®
 	computeCov(X, C);
-	//¼ÆËãÌØÕ÷ÖµºÍÌØÕ÷ÏòÁ¿
+	//è®¡ç®—ç‰¹å¾å€¼å’Œç‰¹å¾å‘é‡
 	computeEig(C, vec, val);
-	//¼ÆËãËğÊ§ÂÊ£¬È·¶¨½µµÍÎ¬Êı
+	//è®¡ç®—æŸå¤±ç‡ï¼Œç¡®å®šé™ä½ç»´æ•°
 	int dim = computeDim(val);
-	//¼ÆËã½á¹û
+	//è®¡ç®—ç»“æœ
 	MatrixXd res = X * vec.rightCols(dim);
-	//Êä³ö½á¹û
+	//è¾“å‡ºç»“æœ
 	fout << "the result is " << res.rows() << "x" << res.cols() << " after pca algorithm." << endl;
 	fout << res;
 	system("pause");
